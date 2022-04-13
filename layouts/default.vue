@@ -51,7 +51,6 @@ export default {
   },
   methods: {
     toggle() {
-      console.log(this.isActive);
       this.isActive = !this.isActive;
     },
   },
