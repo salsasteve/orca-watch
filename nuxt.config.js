@@ -7,7 +7,7 @@ export default {
     },
   },
   head: {
-    title: "orca-watch-nuxt",
+    title: "orca-watch",
     htmlAttrs: {
       lang: "en",
     },
@@ -33,6 +33,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     "@nuxt/typescript-build",
+    "@nuxtjs/google-fonts",
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -43,4 +44,10 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  googleFonts: {
+    families: {
+      "Fredoka+One": true,
+    },
+  },
 };

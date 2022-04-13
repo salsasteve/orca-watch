@@ -1,51 +1,45 @@
 <template>
   <div>
-    <nav
-      class="navbar header has-shadow is-primary"
-      role="navigation"
-      aria-label="main navigation"
-    >
-      <div class="navbar-brand">
-        <div class="navbar-burger">
-          <span />
-          <span />
-          <span />
+    <div class="hero-head">
+      <header class="navbar">
+        <div class="container">
+          <div class="navbar-brand">
+            <a class="navbar-item">
+              <img
+                src="https://bulma.io/images/bulma-type-white.png"
+                alt="Logo"
+              />
+            </a>
+            <span class="navbar-burger" data-target="navbarMenuHeroC">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+          <div id="navbarMenuHeroC" class="navbar-menu">
+            <div class="navbar-end">
+              <a href="/" class="navbar-item is-active"> Home </a>
+              <a href="/tokencards" class="navbar-item"> Tokens </a>
+              <a class="navbar-item"> Documentation </a>
+              <span class="navbar-item">
+                <a class="button is-success is-inverted">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Download</span>
+                </a>
+              </span>
+            </div>
+          </div>
         </div>
-      </div>
-    </nav>
-
-    <section class="main-content columns">
-      <aside class="column is-2 section">
-        <p class="menu-label is-hidden-touch">General</p>
-        <ul class="menu-list">
-          <li v-for="(item, key) of items" :key="key">
-            <NuxtLink :to="item.to" exact-active-class="is-active">
-              <b-icon :icon="item.icon" /> {{ item.title }}
-            </NuxtLink>
-          </li>
-        </ul>
-      </aside>
-
-      <div class="container column is-10">
-        <Nuxt />
-      </div>
-    </section>
+      </header>
+    </div>
+    <Nuxt />
   </div>
 </template>
 
 <script>
 export default {
   name: "DefaultLayout",
-  data() {
-    return {
-      items: [
-        {
-          title: "Home",
-          icon: "home",
-          to: { name: "index" },
-        },
-      ],
-    };
-  },
 };
 </script>
