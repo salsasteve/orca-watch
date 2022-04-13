@@ -4,13 +4,22 @@
       <header class="navbar">
         <div class="container">
           <div class="navbar-brand">
-            <span class="navbar-burger" data-target="navbarMenuHeroC">
+            <span
+              class="navbar-burger"
+              v-bind:class="{ 'is-active': isActive }"
+              @click="toggle"
+              data-target="navbarMenuHeroC"
+            >
               <span></span>
               <span></span>
               <span></span>
             </span>
           </div>
-          <div id="navbarMenuHeroC" class="navbar-menu">
+          <div
+            id="navbarMenuHeroC"
+            class="navbar-menu"
+            v-bind:class="{ 'is-active': isActive }"
+          >
             <div class="navbar-end">
               <a href="/" class="navbar-item is-active"> Home </a>
               <a href="/tokencards" class="navbar-item"> Tokens </a>
@@ -35,30 +44,16 @@
 <script>
 export default {
   name: "DefaultLayout",
-  mounted() {
-    document.addEventListener("DOMContentLoaded", () => {
-      // Get all "navbar-burger" elements
-      const $navbarBurgers = Array.prototype.slice.call(
-        document.querySelectorAll(".navbar-burger"),
-        0
-      );
-
-      // Check if there are any navbar burgers
-      if ($navbarBurgers.length > 0) {
-        // Add a click event on each of them
-        $navbarBurgers.forEach((el) => {
-          el.addEventListener("click", () => {
-            // Get the target from the "data-target" attribute
-            const target = el.dataset.target;
-            const $target = document.getElementById(target);
-
-            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-            el.classList.toggle("is-active");
-            $target.classList.toggle("is-active");
-          });
-        });
-      }
-    });
+  data() {
+    return {
+      isActive: false,
+    };
+  },
+  methods: {
+    toggle() {
+      console.log(this.isActive);
+      this.isActive = !this.isActive;
+    },
   },
 };
 </script>
