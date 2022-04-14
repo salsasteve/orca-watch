@@ -5,7 +5,8 @@
         >Current {{ $route.params.id }} price is {{ tokenPrice }}</b-tag
       >
     </b-taglist>
-    <TopHoldersTable :tokenId="$route.params.id" />
+    <DonutExample />
+    <!-- <TopHoldersTable :tokenId="$route.params.id" /> -->
     <hr />
     <small>Token ID: {{ $route.params.id }}</small>
   </div>
@@ -14,10 +15,13 @@
 <script>
 import TopHoldersTable from "../../../components/TopHoldersTable";
 import CoinGeckoService from "../../../services/CoinGeckoService";
+// import DonutExample from "../../../components/charts/Donut";
 
 export default {
   components: {
+    DonutExample: () => import("../../../components/charts/Donut.vue"),
     TopHoldersTable,
+    // DonutExample,
   },
   data() {
     return {
