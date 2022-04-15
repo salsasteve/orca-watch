@@ -1,58 +1,16 @@
 <template>
   <div>
-    <div class="hero-head">
-      <header class="navbar">
-        <div class="container">
-          <div class="navbar-brand">
-            <span
-              class="navbar-burger"
-              v-bind:class="{ 'is-active': isActive }"
-              @click="toggle"
-              data-target="navbarMenuHeroC"
-            >
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-          </div>
-          <div
-            id="navbarMenuHeroC"
-            class="navbar-menu"
-            v-bind:class="{ 'is-active': isActive }"
-          >
-            <div class="navbar-end">
-              <a href="/" class="navbar-item is-active"> Home </a>
-              <a href="/tokencards" class="navbar-item"> Tokens </a>
-              <a class="navbar-item"> Documentation </a>
-              <span class="navbar-item">
-                <a class="button is-success is-inverted">
-                  <span class="icon">
-                    <i class="fab fa-github"></i>
-                  </span>
-                  <span>Download</span>
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
-      </header>
-    </div>
-    <Nuxt />
+    <app-nav-bar />
+    <nuxt />
   </div>
 </template>
 
 <script>
+import AppNavBar from '@/components/layout/AppNavBar.vue'
 export default {
-  name: "DefaultLayout",
-  data() {
-    return {
-      isActive: false,
-    };
+  name: 'DefaultLayout',
+  components: {
+    AppNavBar,
   },
-  methods: {
-    toggle() {
-      this.isActive = !this.isActive;
-    },
-  },
-};
+}
 </script>
