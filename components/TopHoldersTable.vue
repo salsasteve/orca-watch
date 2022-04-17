@@ -33,9 +33,7 @@
         {{ props.row.balance }}
       </b-table-column>
 
-      <b-table-column field="share" label="Share" v-slot="props">
-        {{ props.row.share }}%
-      </b-table-column>
+      <b-table-column field="share" label="Share" v-slot="props"> {{ props.row.share }}% </b-table-column>
 
       <template #empty>
         <div class="has-text-centered">No records</div>
@@ -45,11 +43,11 @@
 </template>
 
 <script>
-import EthplorerService from "../services/EthplorerService";
-import CoinGeckoService from "../services/CoinGeckoService";
+import EthplorerService from '../services/EthplorerService'
+import CoinGeckoService from '../services/CoinGeckoService'
 
 export default {
-  name: "TopHoldersTable",
+  name: 'TopHoldersTable',
   props: {
     tokenId: String,
   },
@@ -67,28 +65,32 @@ export default {
       isPaginated: true,
       isPaginationSimple: false,
       isPaginationRounded: true,
-      paginationPosition: "bottom",
-      defaultSortDirection: "asc",
-      sortIcon: "arrow-up",
-      sortIconSize: "is-small",
+      paginationPosition: 'bottom',
+      defaultSortDirection: 'asc',
+      sortIcon: 'arrow-up',
+      sortIconSize: 'is-small',
       currentPage: 1,
       perPage: 10,
       hasInput: false,
-    };
-  },
-  async fetch() {
-    try {
-      const coinData = await CoinGeckoService.getCoinData(this.tokenId);
-      const contractAddress = coinData.data.platforms.ethereum;
-      const { data } = await EthplorerService.getTopTokenHolders(
-        contractAddress
-      );
-      this.data = data;
-    } catch (e) {
-      console.log(e);
     }
   },
-};
+  async fetch() {
+    const limit = 100
+    try {
+      this.loading = true
+      const coinData = await CoinGeckoService.getCoinData(this.tokenId)
+      const contractAddress = coinData.data.platforms.ethereum
+      const { data } = await EthplorerService.getTopTokenHolders(contractAddress, limit)
+
+      this.data = data.holders
+      this.loading = false
+    } catch (e) {
+      this.data = []
+      this.loading = false
+      console.log(e)
+    }
+  },
+}
 </script>
 
 <style></style>

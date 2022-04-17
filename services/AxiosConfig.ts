@@ -1,13 +1,13 @@
-import axios from "axios";
+import axios from 'axios'
 
-const clientAPI = (url: string) =>
+const clientAPI = (url: string, withCredentials = false) =>
   axios.create({
     baseURL: url,
-    withCredentials: false,
+    withCredentials,
     headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     },
-  });
+  })
 
-export default clientAPI;
+export default clientAPI

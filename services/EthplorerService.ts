@@ -1,10 +1,9 @@
-import clientAPI from "./AxiosConfig";
+import clientAPI from './AxiosConfig'
 
-const baseURL = "https://us-central1-nextfire-b04a6.cloudfunctions.net";
+const baseURL = '/yakkabotapi'
+const withCredentials = false
 export default {
-  getTopTokenHolders(contractAddress: string) {
-    return clientAPI(baseURL).get(
-      `/getTopTokenHolders?contract_address=${contractAddress}`
-    );
+  getTopTokenHolders(contractAddress: string, limit: number) {
+    return clientAPI(baseURL, withCredentials).get(`/token-metrics/topTokenHolders/${contractAddress}/${limit}`)
   },
-};
+}
