@@ -25,15 +25,15 @@
       aria-current-label="Current page"
       :page-input="hasInput"
     >
-      <b-table-column field="address" label="Address" v-slot="props">
+      <b-table-column v-slot="props" field="address" label="Address">
         {{ props.row.address }}
       </b-table-column>
 
-      <b-table-column field="balance" label="Balance" v-slot="props">
+      <b-table-column v-slot="props" field="balance" label="Balance">
         {{ props.row.balance }}
       </b-table-column>
 
-      <b-table-column field="share" label="Share" v-slot="props"> {{ props.row.share }}% </b-table-column>
+      <b-table-column v-slot="props" field="share" label="Share"> {{ props.row.share }}% </b-table-column>
 
       <template #empty>
         <div class="has-text-centered">No records</div>
@@ -49,7 +49,7 @@ import CoinGeckoService from '../services/CoinGeckoService'
 export default {
   name: 'TopHoldersTable',
   props: {
-    tokenId: String,
+    tokenId: '',
   },
   data() {
     return {

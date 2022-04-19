@@ -1,8 +1,11 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
-  ssr: true,
-  // https://stackoverflow.com/questions/68520157/nuxt-fetch-hook-why-triggered-both-in-server-and-in-client
+  ssr: false,
+  generate: {
+    falback: true,
+  },
   target: 'static',
+  modern: 'client',
   head: {
     title: 'orca-watch',
     htmlAttrs: {
