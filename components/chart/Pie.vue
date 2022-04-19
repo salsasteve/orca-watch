@@ -65,7 +65,7 @@ export default {
         datasets: [
           {
             data: [],
-            backgroundColor: ['#0074D9', '#FF4136', '#2ECC40', '#39CCCC', '#01FF70', '#85144b', '#F012BE', '#3D9970', '#111111', '#AAAAAA'],
+            backgroundColor: ['#0074D9', '#FF4136', '#2ECC40', '#39CCCC', '#01FF70', '#85144b', '#F012BE', '#3D9970', '#111111', '#AAAAAA', '#DD1B16'],
           },
         ],
       },
@@ -87,8 +87,17 @@ export default {
       const coinData = await CoinGeckoService.getCoinData(this.tokenId)
       const contractAddress = coinData.data.platforms.ethereum
       const { data } = await EthplorerService.getTopTokenHolders(contractAddress, limit)
-      this.chartData.labels = data.holders.map((x) => x.address)
-      this.chartData.datasets[0].data = data.holders.map((x) => x.share)
+
+      const addresses = data.holders.map((x) => String(x.address)).slice(0, 10)
+      addresses.push('Everyone Else')
+      this.chartData.labels = addresses
+
+      const arrTopTenShare = data.holders.map((x) => x.share).slice(0, 10)
+      const shareOfTopTen = arrTopTenShare.reduce((a, b) => a + b, 0)
+      const othersShare = 100 - shareOfTopTen
+      arrTopTenShare.push(othersShare)
+      this.chartData.datasets[0].data = arrTopTenShare
+
       this.loading = false
     } catch (e) {
       this.loading = false
