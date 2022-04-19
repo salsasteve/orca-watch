@@ -14,7 +14,7 @@
             </div>
             <div class="tile is-parent is-vertical">
               <article class="tile is-child notification is-primary">
-                <nuxt-link to="/tokens/ethereum"> Ethereum </nuxt-link>
+                <nuxt-link to="/tokens/universe-xyz"> Universe.xyz </nuxt-link>
               </article>
               <article class="tile is-child notification is-primary">
                 <nuxt-link to="/tokens/pooltogether"> PoolTogether </nuxt-link>

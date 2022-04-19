@@ -78,11 +78,9 @@ export default {
     const limit = 100
     try {
       this.loading = true
-      console.log('1')
       const coinData = await CoinGeckoService.getCoinData(this.tokenId)
       const contractAddress = coinData.data.platforms.ethereum
       const { data } = await EthplorerService.getTopTokenHolders(contractAddress, limit)
-      console.log('2')
       this.data = data.holders
       this.loading = false
     } catch (e) {
