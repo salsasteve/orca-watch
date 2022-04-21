@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="container">
     <b-table
       :data="isEmpty ? [] : data"
       :bordered="isBordered"
@@ -75,7 +75,6 @@ export default {
       this.loading = true
       const { data } = await EthplorerService.getTokensNew()
       this.data = data.map(transformTokenData)
-      console.log(this.data)
       this.loading = false
     } catch (e) {
       this.data = []
