@@ -37,7 +37,13 @@
 </template>
 
 <script>
+import { unix } from 'dayjs'
 import EthplorerService from '../../services/EthplorerService'
+
+function transformTokenData(data) {
+  data.added = unix(data.added)
+  return data
+}
 
 export default {
   name: 'DegenTable',
@@ -68,7 +74,7 @@ export default {
     try {
       this.loading = true
       const { data } = await EthplorerService.getTokensNew()
-      this.data = data
+      this.data = data.map(transformTokenData)
       console.log(this.data)
       this.loading = false
     } catch (e) {
