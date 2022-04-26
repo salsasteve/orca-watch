@@ -28,6 +28,12 @@
       <b-table-column v-slot="props" field="name" label="Name">{{ props.row.name }}</b-table-column>
       <b-table-column v-slot="props" field="symbol" label="Symbol">{{ props.row.symbol }}</b-table-column>
       <b-table-column v-slot="props" field="added" label="Date Added"> {{ props.row.added }} </b-table-column>
+      <b-table-column v-slot="props" field="coingecko" label="CoinGecko"> {{ props.row.coingecko }} </b-table-column>
+      <b-table-column v-slot="props" field="website" label="Website">
+        <a :href="props.row.website">{{ props.row.website }}</a>
+      </b-table-column>
+      <b-table-column v-slot="props" field="twitter" label="Twitter"> {{ props.row.twitter }} </b-table-column>
+      <b-table-column v-slot="props" field="reddit" label="Reddit"> {{ props.row.reddit }} </b-table-column>
 
       <template #empty>
         <div class="has-text-centered">No records</div>
